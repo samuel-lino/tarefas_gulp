@@ -37,6 +37,10 @@ function comprimirImage(){
         ]))
         .pipe(gulp.dest('./build/images'))
 }
-
-const main = gulp.series(compilarJs, compilarSass, comprimirImage);
-export{main as default}
+const tarefa = function(){
+    gulp.watch('./source/js',{ignoreInitial: false}, compilarJs);
+    gulp.watch('./source/styles',{ignoreInitial: false}, compilarSass);
+    gulp.watch('./source/images',{ignoreInitial: false}, comprimirImage);
+}
+// const main = gulp.series(, compilarSass, comprimirImage);
+export{tarefa as default}
